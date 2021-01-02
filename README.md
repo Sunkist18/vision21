@@ -5,7 +5,7 @@ Python tools for Vision 21 academies.
 
 ### 🔖 How to use these tools
 
-- [**한글 파일 QR 변환기 hwpFileQrCode**]()
+- **한글 파일 QR 변환기 hwpFileQrCode**
 - 스킵 파일 합치기 skipMerge
 - 영상 북마크로 QR 생성기 videoBookMarkQrCode
 - 유튜브 QR 생성기 [자동] youtubeLinkQrCode (Automatic)
