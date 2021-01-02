@@ -1,0 +1,46 @@
+# 주석은 이렇게 달 수 있습니다
+# 주석 부분은 프로그램에 아무런 영향을 끼치지 않습니다
+# 만든이   : 최민우
+# Contact  : dandalf@o.cnu.ac.kr
+
+@function
+# 이부분은 파이썬에서 전처리 되는 부분입니다
+# 필요한 Text 에서 필요한 모든 전처리 과정을 여기에 해주시길 바랍니다
+# 함수의 제작은 파이썬의 형식을 따릅니다
+# 필요한 경우 파이썬의 모듈을 가져와주세요
+# 왠만하면 반환형을 string 으로 해주세요
+
+from math import *
+from random import randint
+
+var = {}
+var['a'] = randint(1,10)
+var['b'] = randint(1,10)
+var['c'] = randint(1,10)
+var['d'] = randint(1,10)
+var['e'] = var['a'] + var['b'] + var['c'] + var['d']
+var['something'] = ['핸드폰', '데스크탑', '노트북', '에어컨', '액션캠', '쌍안경', '블루투스 이어폰']
+var['st1_index'] = randint(0, len(var['something']) - 1)
+var['st1'] = var['something'][var['st1_index']]
+del var['something'][var['st1_index']]
+var['st2'] = var['something'][randint(0, len(var['something']) - 1)]
+
+@text
+어느 학급의 학생 <n>&e`</n>명 중에서 &st1을 갖고 있는 학생이 <n>%&a+&b `</n>명, &st1과 &st2을 모두 갖고 있는 학생은 <n>&b`</n>명, &st1과 &st2 중 어느 것도 갖고 있지 않은 학생이 <n>&d`</n>명일 때, &st2을 갖고 있는 학생의 수를 구하시오. (정답 :              )
+
+@answer
+정답 %&b+&c
+전체집합을 <n>U,</n> &st1을 갖고 있는 학생의 집합을 <n>A,</n> &st2 을 갖고 있는 학생의 집합을 <n>B,</n>라 하면
+    <n>n LEFT ( U RIGHT ) =&e,~n LEFT ( A RIGHT ) =%&a+&b ,</n><n>n LEFT ( A` SMALLINTER `B RIGHT ) =&b,~n LEFT ( A ^{c} ` SMALLINTER `B ^{c} RIGHT ) =&d</n>
+    <n>n LEFT ( A ^{c} ` SMALLINTER `B ^{c} RIGHT ) =n LEFT ( LEFT ( A` CUP `B RIGHT ) ^{c} RIGHT )</n><n>=&e-n LEFT ( A` CUP `B RIGHT ) =&d</n>
+    <n>n LEFT ( A` CUP `B RIGHT ) =%&e-&d </n>
+
+그런데 <n>n LEFT ( A` CUP `B RIGHT ) =n LEFT ( A RIGHT ) +n LEFT ( B RIGHT ) -n LEFT ( A` SMALLINTER `B RIGHT ) `</n>에서
+    <n>%&e-&d =%&a+&b +n LEFT ( B RIGHT ) -&b</n>
+
+따라서 <n>n LEFT ( B RIGHT ) =%&b+&c </n>
+
+@condition
+
+@global
+# 이부분은

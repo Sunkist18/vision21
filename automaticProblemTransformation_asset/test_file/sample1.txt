@@ -1,0 +1,51 @@
+# 주석은 이렇게 달 수 있습니다
+# 주석 부분은 프로그램에 아무런 영향을 끼치지 않습니다
+# 만든이   : 최민우
+# Contact  : dandalf@o.cnu.ac.kr
+
+@function
+# 이부분은 파이썬에서 전처리 되는 부분입니다
+# 필요한 Text 에서 필요한 모든 전처리 과정을 여기에 해주시길 바랍니다
+# 함수의 제작은 파이썬의 형식을 따릅니다
+# 필요한 경우 파이썬의 모듈을 가져와주세요
+# 웬만하면 반환형을 string 으로 해주세요
+
+from math import *
+from random import randint
+from copy import deepcopy
+
+var = {}
+var['num'] = randint(9, 14)
+var['A'] = list(filter(lambda x: x % 2, range(1, var['num'] + 1)))
+var['B'] = deepcopy(var['A'])
+var['a'] = var['A'][randint(0, len(var['A']) - 1)]
+var['B'].pop(var['B'].index(var['a']))
+
+var['A'] = ',~'.join(map(str, var['A']))
+var['B'] = ',~'.join(map(str, var['B']))
+
+@text
+전체집합 <n>U= LEFT { x vert x` RIGHT .</n>는 <n>&num</n> 이하의 자연수<n>LEFT. ` RIGHT } `</n>의 부분집합 <n>A`</n>가 다음 조건을 만족시킨다.
+
+    (가) <n>&a IN A</n>
+    (나) 집합 <n>A`</n>의 모든 원소의 곱과 합은 모두 홀수이다.
+
+집합 <n>A`</n>의 개수를 구하시오. (정답 :              )
+
+@answer
+집합 <n>A`</n> 모든 원소의 곱이 홀수이므로 집합 <n>A`</n>의 모든 원소는
+홀수이어야 한다.
+집합 <n>A`</n>의 모든 원소의 합이 홀수이므로 집합 <n>A`</n>의 원소의 개수는 홀수이어야 한다.
+집합 <n>U`</n>의 원소 중 홀수는 <n>&A`</n>이고 <n>&a IN A</n>이므로
+집합 <n>A`</n>는 <n>&a`</n>를 제외한 <n>&B`</n>에서
+
+
+
+의 개이다.
+
+@condition
+frac_true()
+
+
+@global
+# 이부분은

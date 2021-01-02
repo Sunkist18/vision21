@@ -1,0 +1,50 @@
+# 주석은 이렇게 달 수 있습니다
+# 주석 부분은 프로그램에 아무런 영향을 끼치지 않습니다
+# 만든이   : 최민우
+# Contact  : dandalf@o.cnu.ac.kr
+
+@function
+# 이부분은 파이썬에서 전처리 되는 부분입니다
+# 필요한 Text 에서 필요한 모든 전처리 과정을 여기에 해주시길 바랍니다
+# 함수의 제작은 파이썬의 형식을 따릅니다
+# 필요한 경우 파이썬의 모듈을 가져와주세요
+# 왠만하면 반환형을 string 으로 해주세요
+
+from math import *
+from random import randint
+
+var = {}
+var['a1'] = randint(-5,5)
+var['a2'] = randint(-5,5)
+var['a3'] = randint(-5,5)
+var['a4'] = randint(-5,5)
+var['AB'] = randint(1,5)
+var['BC'] = randint(1,5)
+var['a'] = ((var['AB'] + var['BC']) * var['a3'] - var['AB'] * var['a1'])/(var['BC'])
+var['b'] = ((var['AB'] + var['BC']) * var['a4'] - var['AB'] * var['a2'])/(var['BC'])
+
+@text
+두 점 <n>rm A(&a1,~&a2)</n>, <n>rm B(&a3,~&a4)</n>에 대하여 선분 <n>rm AB</n>의
+연장선 위에 <n>&AB {bar{rm AB it}} =&BC {bar{rm BC it}} `</n>를 만족시키는 점을 <n>rm C( it a,~b)`</n>라
+할 때, <n>a+b`</n>의 값을 구하시오. (단, <n>a,~b</n>는 상수, <n>a>0`</n>)
+
+# 여기에 문제부분에 해당하는 것을 넣어주세요
+# <n>수식</n> &변수명 %실행될문장 (띄어쓰기 필수) <n></n>
+
+@answer
+<n>a>0</n>이므로 직선 <n>rm AB</n> 위의 세 점은 <n>rm A,~B,~C</n>의 순서로
+놓여 있다.
+<n>&AB {bar{rm AB it}} =&BC {bar{rm BC it}}</n>에서 <n>{bar{rm AB it}} : {bar{rm BC it}} =&BC:&AB</n>이므로 점 <n>rm C</n>는 선분 <n>rm AB</n>를 <n>%&AB+&BC :&AB </n>으로 외분하는 점이다.
+따라서 점 <n>rm C</n>의 좌표는
+<n>LEFT ( {%&AB+&BC TIMES  &a3-&AB TIMES %&AB+&BC } over {%&AB+&BC - &AB} ,~ {%&AB+&BC TIMES  &a4- &AB TIMES  &a2} over {%&AB+&BC - &AB} RIGHT ) =(%frac(&a) ,~%frac(&b) ) </n>
+이므로 <n>a=%frac(&a) ,~b=%frac(&b) </n>	<n>THEREFORE ~a+b=%frac(&a+&b) </n>
+
+# 여기에 정답부분에 해당하는 것을 넣어주세요
+# <n>수식</n> &변수명 %실행될문장 (띄어쓰기 필수)
+
+@condition
+frac_true()
+
+
+@global
+# 이부분은
