@@ -64,7 +64,7 @@ def isSkipValied(string):
             time, num = part.split()[0], ' '.join(part.split()[1:])
             if len(time.split(':')) == 2:
                 time = int(time.split(':')[0]) * 60 + int(time.split(':')[1])
-            if len(time.split(':')) == 3:
+            elif len(time.split(':')) == 3:
                 time = int(time.split(':')[0]) * 60 * 60 + int(time.split(':')[1]) * 60 + int(time.split(':')[2])
             return_value.append([num, str(time)])
     except Exception as e:
