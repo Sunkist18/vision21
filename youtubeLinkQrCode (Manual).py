@@ -8,7 +8,10 @@ def isSkipVailed(string):
     try:
         for part in string.split('/'):
             time, num = part.split()[0], ' '.join(part.split()[1:])
-            time = int(time.split(':')[0]) * 60 + int(time.split(':')[1])
+            if len(time.split(':')) == 2:
+                time = int(time.split(':')[0]) * 60 + int(time.split(':')[1])
+            if len(time.split(':')) == 3:
+                time = int(time.split(':')[0]) * 60 * 60 + int(time.split(':')[1]) * 60 + int(time.split(':')[2])
             return_value.append([num, str(time)])
     except Exception as e:
         print('인식할 수 없는 스킵 문자열이 있습니다')
