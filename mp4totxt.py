@@ -1,14 +1,17 @@
 import os
 import sys
+from random import randint
 
 import cv2
 import numpy as np
 
 try:
-    file_name = sys.argv[1]
+    origin = sys.argv[1]
 except IndexError:
     exit(112)
 
+file_name = '\\'.join(origin.split('\\')[:-1]) + '\\' + str(randint(1, int(10e15)))
+os.rename(origin, file_name)
 capture = cv2.VideoCapture(file_name)
 fps = capture.get(cv2.CAP_PROP_FPS)
 
@@ -48,8 +51,8 @@ finally:
         second = int(j % 60)
         frame_set.add('%02d:%02d' % (minute, second))
 
-    with open(file_name.replace('.mp4', '.txt'), 'w') as f:
+    with open(origin.replace('.mp4', '.txt'), 'w') as f:
         f.write(' 0번 / '.join(sorted(list(frame_set))) + ' 0번')
         f.close()
 
-    os.system('python tmp_to_kor.py ' + file_name)
+    os.rename(file_name, origin)
