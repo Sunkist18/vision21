@@ -1,9 +1,9 @@
 import pyautogui
-from pynput.keyboard import Key, Listener, Controller, _win32
+from pynput.keyboard import Listener
 
 import do
-from config import Config
 import util
+from config import Config
 
 pressed = set()
 
@@ -36,5 +36,9 @@ def on_release(key):
         return False
 
 
-with Listener(on_press=on_press, on_release=on_release) as listener:
-    listener.join()
+while True:
+    try:
+        with Listener(on_press=on_press, on_release=on_release) as listener:
+            listener.join()
+    except:
+        pass

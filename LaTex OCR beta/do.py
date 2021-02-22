@@ -23,13 +23,16 @@ def do(string):
     box = string.split('$')
     text = [box[i] for i in range(0, len(box), 2)]
     math = [box[i] for i in range(1, len(box), 2)]
-    print('$수식$'.join(text))
-    print(math)
+    print(box)
 
 
 def do_():
+    global text
     for i in range(0, len(text)):
         if text[i] != '\n':
+            if len(text[i]) >= 1:
+                if text[i][0] == ' ':
+                    text[i] = text[i][1:]
             pyperclip.copy(text[i])
             ctrl('v')
         else:
@@ -59,10 +62,12 @@ def do_():
             # 처리
             ctrl('a')
             ctrl('c')
-            pyautogui.sleep(.1)
-            pyperclip.copy(
-                pyperclip.paste().replace('RIGHT >', '>').replace('LEFT >', '>').replace('RIGHT <', '<').replace(
-                    'LEFT <', '<').replace(',', ',~').replace('THEREFORE', '~~THEREFORE'))
+            pyautogui.sleep(.3)
+            tt = pyperclip.paste().replace('RIGHT >', '>').replace('LEFT >', '>').replace('RIGHT <', '<').replace(
+                'LEFT <', '<').replace(',', ',~').replace('∴', '~~THEREFORE~') + '`'
+            pyperclip.copy(tt)
+
+            pyautogui.sleep(.3)
             ctrl('v')
 
             pyautogui.keyDown('shift')

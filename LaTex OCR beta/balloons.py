@@ -40,7 +40,7 @@ class WindowsBalloonTip:
                          (self.hwnd, 0, NIF_INFO, win32con.WM_USER + 20, \
                           hicon, "Balloon  tooltip", msg, 200, title))
         # self.show_balloon(title, msg)
-        time.sleep(3)
+        time.sleep(1)
         DestroyWindow(self.hwnd)
         UnregisterClass(classAtom, hinst)
 
